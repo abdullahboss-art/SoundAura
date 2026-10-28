@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "244659234303",
+    "project_id": "soundclock-b59f4",
+    "storage_bucket": "soundclock-b59f4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:244659234303:android:648413ed2c069bae6333ca",
+        "android_client_info": {
+          "package_name": "Sound.com"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhgxaivqD0Tu1oxyqFDM0stjRMVyL38Eg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

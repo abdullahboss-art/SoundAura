@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="$FLUTTER_BASE_HREF">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SoundAura - Your music. Anytime. Anywhere.">
+  <meta name="theme-color" content="#1B0F4D">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="SoundAura">
+
+  <!--
+    Logo path: Flutter web puts pubspec assets inside an extra "assets/" folder,
+    so assets/images/Logo.png becomes assets/assets/images/Logo.png.
+    Keep the file name EXACTLY the same everywhere (capital L).
+  -->
+  <link rel="apple-touch-icon" href="assets/assets/images/Logo.png">
+
+  <!-- Favicon (your logo) -->
+  <link rel="icon" type="image/png" href="assets/assets/images/Logo.png"/>
+
+  <title>SoundAura</title>
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Loading screen shown until the Flutter app is ready -->
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: #1B0F4D;
+    }
+
+    #splash {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      background: #1B0F4D;
+      z-index: 9999;
+      transition: opacity 0.4s ease;
+    }
+
+    #splash.hide {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    #splash img {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+      border-radius: 28px;
+      animation: pulse 1.6s ease-in-out infinite;
+    }
+
+    #splash .name {
+      font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      color: #ffffff;
+    }
+
+    #splash .bar {
+      width: 120px;
+      height: 3px;
+      border-radius: 3px;
+      background: rgba(255, 255, 255, 0.18);
+      overflow: hidden;
+    }
+
+    #splash .bar::after {
+      content: "";
+      display: block;
+      width: 40%;
+      height: 100%;
+      border-radius: 3px;
+      background: #ffffff;
+      animation: slide 1.2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.06); }
+    }
+
+    @keyframes slide {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(260%); }
+    }
+  </style>
+</head>
+<body>
+  <div id="splash">
+    <img src="assets/assets/images/Logo.png" alt="SoundAura logo">
+    <div class="name">SoundAura</div>
+    <div class="bar"></div>
+  </div>
+
+  <script>
+    // Hide the loading screen once Flutter draws its first frame.
+    function hideSplash() {
+      var el = document.getElementById('splash');
+      if (!el) return;
+      el.classList.add('hide');
+      setTimeout(function () { el.remove(); }, 500);
+    }
+    window.addEventListener('flutter-first-frame', hideSplash);
+    // Safety net in case the event never fires.
+    setTimeout(hideSplash, 15000);
+  </script>
+
+
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>

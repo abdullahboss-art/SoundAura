@@ -1,0 +1,7 @@
+# YouTube Data API v3 key (Google Cloud Console se). Videos sections ke liye zaroori.
+YOUTUBE_API_KEY=
+# Audius API key (optional)
+AUDIUS_API_KEY=
+AUDIUS_APP_NAME=soundclock
+# Web ke liye sab allowed; live par apna domain likho
+ALLOWED_ORIGINS=*
