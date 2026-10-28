@@ -31,7 +31,7 @@ class ApiException implements Exception {
 ///     --dart-define=DIRECT_FALLBACK=false
 ///
 /// Web live par:
-///   flutter build web --release --dart-define=BACKEND_URL=https://aapka-server.onrender.com
+///   flutter build web --release --dart-define=BACKEND_URL=https://sound-aura-mtx6.vercel.app
 class ApiClient {
   ApiClient._();
 
@@ -55,6 +55,11 @@ class ApiClient {
   static const bool directFallback =
       bool.fromEnvironment('DIRECT_FALLBACK', defaultValue: true);
 
+  /// Server ka jawab kitni der tak intezar karna hai.
+  /// Vercel par pehli request (cache khali) 30-60 second le sakti hai,
+  /// isliye 90 second rakha hai.
+  static const Duration requestTimeout = Duration(seconds: 90);
+
   bool get enabled => baseUrl.isNotEmpty;
 
   String get _root => baseUrl.replaceAll(RegExp(r'/+$'), '');
@@ -77,9 +82,7 @@ class ApiClient {
     final http.Response res;
 
     try {
-      res = await http.get(_uri(path, query)).timeout(
-            const Duration(seconds: 30),
-          );
+      res = await http.get(_uri(path, query)).timeout(requestTimeout);
     } catch (e) {
       debugPrint('Backend connect failed ($_root$path): $e');
       // URL bhi dikhate hain, taake pata chale app kis address par ja rahi hai.
